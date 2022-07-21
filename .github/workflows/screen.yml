@@ -19,3 +19,13 @@ jobs:
         uses: "lannonbr/puppeteer-screenshot-action@1.3.1"
         with:
           url: https://gatsby-github-stats.netlify.com
+      - name: push to branch
+        run: |
+          set -x
+          git status
+          git add screenshots
+          git checkout -b screenshots
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git commit -m 'update screenshot'
+          git push origin screenshots -f
